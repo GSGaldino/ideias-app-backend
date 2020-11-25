@@ -18,12 +18,27 @@ router.post('/', async (req, res) => {
         error: 'Failed to create session!'
       })
     }
-
     res.json(user);
 
   } catch (error) {
     console.log(error)
   }
+})
+
+router.post('/brain', async (req, res) => {
+  const user_id = req.headers.authorization;
+
+  const ideas = await connection('ideas')
+    .where('user_id', user_id)
+    .select('*')
+
+  if(!ideas){
+    return res.status(404).json({
+      message: 'No ideas found with this id'
+    })
+  }
+  res.json(ideas)
+  console.log(user_id);
 })
 
 module.exports = router;

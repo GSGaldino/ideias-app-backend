@@ -19,6 +19,7 @@ router.post('/', async (req, res) => {
         error: 'Falha na autenticação!'
       })
     }
+    console.log(user)
     res.json(user)
   } catch (error) {
     console.log(error)

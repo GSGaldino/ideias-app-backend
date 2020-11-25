@@ -4,6 +4,7 @@ exports.up = function(knex) {
     table.increments();
 
     table.string('ideaname').notNullable();
+    table.string('image_url').notNullable();
     table.string('description').notNullable();
     table.decimal('value').notNullable();
 
